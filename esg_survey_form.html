@@ -22,7 +22,7 @@
 </head>
 <body>
     <h1>ESG - 사회 영역 설문조사</h1>
-    <form action="submit.html" method="post">
+    <form method="post" onsubmit="handleSurveySubmit(event)">
 
         <!-- 문항 1 -->
         <div class="question">
@@ -87,5 +87,24 @@
         <br>
         <input type="submit" value="제출하기">
     </form>
+
+    <script>
+        function handleSurveySubmit(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Get selected values
+            const q1Value = document.querySelector('input[name="q1"]:checked') ? document.querySelector('input[name="q1"]:checked').value : 'N/A';
+            const q2Value = document.querySelector('input[name="q2"]:checked') ? document.querySelector('input[name="q2"]:checked').value : 'N/A';
+            const q3Value = document.querySelector('input[name="q3"]:checked') ? document.querySelector('input[name="q3"]:checked').value : 'N/A';
+            const q4Value = document.querySelector('input[name="q4"]:checked') ? document.querySelector('input[name="q4"]:checked').value : 'N/A';
+            const q5Value = document.querySelector('input[name="q5"]:checked') ? document.querySelector('input[name="q5"]:checked').value : 'N/A';
+
+            // Construct summary string
+            const summary = `선택된 답변:\n문항 1: ${q1Value}\n문항 2: ${q2Value}\n문항 3: ${q3Value}\n문항 4: ${q4Value}\n문항 5: ${q5Value}`;
+
+            // Display summary
+            alert(summary);
+        }
+    </script>
 </body>
 </html>
